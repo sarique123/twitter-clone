@@ -46,10 +46,10 @@ const TweetCard = () => {
 
     return (
         <div className=''>
-            <div className='flex items-center font-semibold text-gray-700 py-2'>
+            {/* <div className='flex items-center font-semibold text-gray-700 py-2'>
                 <RepeatIcon className='mx-1' />
                 <p className='mx-1'>You Retweet</p>
-            </div>
+            </div> */}
             <div className='flex space-x-5'>
                 <Avatar src='https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369989.png' alt='username' className='cursor-pointer' onClick={() => navigate(`/profile/${6}`)} />
                 <div className='w-full'>
@@ -86,7 +86,7 @@ const TweetCard = () => {
                     </div>
 
                     <div className='mt-2'>
-                        <div className='cursor-pointer'>
+                        <div onClick={() => navigate(`/tweet/${4}`)} className='cursor-pointer'>
                             <p className='mb-2 p-0'>This is the best full stack Tweeter clone project using React and SpringBoot</p>
                             <img className='w-[28rem] border border-gray-400 p-5 rounded-md' src='https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369989.png' alt=''></img>
                         </div>
