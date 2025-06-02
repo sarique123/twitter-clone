@@ -12,13 +12,17 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import TweetCard from '../Home/TweetCard';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import ProfileModal from './ProfileModal';
 
 const Profile = () => {
     const navigate = useNavigate();
     const handleBack = () => navigate(-1);
-    const handleOpenProfileModel = () => {
-        console.log("Open profile model");
-    }
+
+    const [openProfileModal,setOpenProfileModal] = useState(false)
+    const handleOpenProfileModal = () => setOpenProfileModal(true);
+    const handleClose = () => setOpenProfileModal(false);
+
+
     const handleFollowUser = () => {
         console.log("Follow user");
     }
@@ -47,7 +51,7 @@ const Profile = () => {
             <section className='pl-6'>
                 <div className='flex justify-between items-start mt-5 h-[5rem]'>
                     <Avatar className='transform -translate-y-24' alt='Mohammad Sarique' src='https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369989.png' sx={{width: '10rem', height: '10rem', border:'4px solid white'}} />
-                    {true ? <Button onClick={handleOpenProfileModel} variant='contained' sx={{borderRadius : '20px'}} >Edit profile</Button> : <Button onClick={handleFollowUser} variant='contained' sx={{borderRadius : '20px'}}>{true ? 'Follow' : 'Unfollow'}</Button>}
+                    {true ? <Button onClick={handleOpenProfileModal} variant='contained' sx={{borderRadius : '20px'}} >Edit profile</Button> : <Button onClick={handleFollowUser} variant='contained' sx={{borderRadius : '20px'}}>{true ? 'Follow' : 'Unfollow'}</Button>}
                 </div>
 
                 <div>
@@ -107,6 +111,9 @@ const Profile = () => {
                     <TabPanel value="4">User Likes</TabPanel>
                 </TabContext>
                 </Box>
+            </section>
+            <section>
+                <ProfileModal handleClose={handleClose} open={openProfileModal}/>
             </section>
         </div>
     )

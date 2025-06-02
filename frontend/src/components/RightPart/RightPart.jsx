@@ -3,12 +3,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import { Button } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import SubscriptionModal from '../SubscriptionModal/SubscriptionModal';
 
 
 const RightPart = () => {
     const handleChangeTheme = () => {
         console.log("Hnadle change Theme");
     }
+
+    const [openSubscriptionModal, setOpenSubscriptionModal] = React.useState(false);
+    const handleOpenSubscriptionModal = () => setOpenSubscriptionModal(true);
+    const handleCloseSubscriptionModal = () => setOpenSubscriptionModal(false);
 
     return (
         <div className='py-5 sticky top'>
@@ -25,7 +30,7 @@ const RightPart = () => {
             <section className='my-5'>
                 <h1 className='text-xl font-bold'>Get Verified</h1>
                 <h1 className='font-bold my-2'>Subscribe to unlock new Features</h1>
-                <Button variant='contained' sx={{padding: '10px', paddingX: '20px', borderRadius: '25px'}} >Get Verified</Button>
+                <Button onClick={setOpenSubscriptionModal} variant='contained' sx={{padding: '10px', paddingX: '20px', borderRadius: '25px'}} >Get Verified</Button>
             </section>
             <section className='mt-7 space-y-5'>
                 <h1 className='font-bold text-xl py-1'>What's happening</h1>
@@ -43,6 +48,9 @@ const RightPart = () => {
                     </div>
                     )}
                 </div>
+            </section>
+            <section>
+                <SubscriptionModal open={openSubscriptionModal} handleClose={handleCloseSubscriptionModal}/>
             </section>
         </div>
     )

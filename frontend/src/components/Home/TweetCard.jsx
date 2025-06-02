@@ -13,10 +13,16 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ReplyModal from './ReplyModal';
+import { useState } from 'react';
 
 const TweetCard = () => {
 
     const navigate = useNavigate();
+
+    const [openReplyModal,setOpenReplyModal] = useState(false)
+    const handleOpenReplyModal = () => setOpenReplyModal(true);
+    const handleCloseReplyModal = () => setOpenReplyModal(false);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -32,9 +38,6 @@ const TweetCard = () => {
         handleClose();
     }
 
-    const handleOpenReplyModel = () => {
-        console.log("Open model");
-    }
 
     const handleCreateRetweet = () => {
         console.log("Handle create retweet");
@@ -45,7 +48,7 @@ const TweetCard = () => {
     }
 
     return (
-        <div className=''>
+        <React.Fragment>
             {/* <div className='flex items-center font-semibold text-gray-700 py-2'>
                 <RepeatIcon className='mx-1' />
                 <p className='mx-1'>You Retweet</p>
@@ -92,7 +95,7 @@ const TweetCard = () => {
                         </div>
                         <div className='py-5 flex justify-between items-center'>
                             <div className='space-x-3 flex items-center text-gray-600'>
-                                <ChatBubbleOutlineIcon className='cursor-pointer' onClick={handleOpenReplyModel}/>
+                                <ChatBubbleOutlineIcon className='cursor-pointer' onClick={handleOpenReplyModal}/>
                                 <p>43</p>
                             </div>
                             <div className={`${true ? "text-pink-600" : "text-gray-600" } space-x-3 flex items-center`}>
@@ -104,17 +107,20 @@ const TweetCard = () => {
                                 <p>54</p>
                             </div>
                             <div className='space-x-3 flex items-center text-gray-600'>
-                                <BarChartIcon className='cursor-pointer' onClick={handleOpenReplyModel}/>
+                                <BarChartIcon className='cursor-pointer' onClick={handleOpenReplyModal}/>
                                 <p>430</p>
                             </div>
                             <div className='space-x-3 flex items-center text-gray-600'>
-                                <FileUploadIcon className='cursor-pointer' onClick={handleOpenReplyModel}/>
+                                <FileUploadIcon className='cursor-pointer' onClick={handleOpenReplyModal}/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <section>
+                <ReplyModal open={openReplyModal} handleClose={handleCloseReplyModal}/>
+            </section>
+        </React.Fragment>
     )
 }
 
