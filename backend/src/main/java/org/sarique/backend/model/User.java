@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.Builder;
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,4 +72,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "following_id")
     )
     private List<User> followings = new ArrayList<>();
+
+    private LocalDateTime createdAt;
 }

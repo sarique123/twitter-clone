@@ -4,6 +4,7 @@ package org.sarique.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,4 +48,6 @@ public class Tweet {
 
     private Boolean isReply;
     private Boolean isRetweet;
+
+    private LocalDateTime createdAt;
 }
