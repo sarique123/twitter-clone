@@ -6,14 +6,23 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+import { useDispatch, useSelector } from "react-redux";
+import { store } from "../../store/store";
+import { logOut } from "../../store/auth/Action";
 
 const Navigation = () => {
+    const {auth} = useSelector(store => store)
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const dispatch = useDispatch();
+
+
     const open = Boolean(anchorEl);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -21,6 +30,7 @@ const Navigation = () => {
     const handleLogOut = () => {
         console.log("Log out")
         handleClose()
+        dispatch(logOut())
     };
 
     return (
@@ -35,7 +45,7 @@ const Navigation = () => {
             </div>
 
             {/* Navigation Menu Items */}
-            <div className="mt-4 space-y-6"> {/* Added margin-top for separation */}
+            <div className="mt-2 space-y-3"> {/* Added margin-top for separation */}
                 {navigationMenu.map((item, index) => (
                     // Use flex and items-center to put icon and text on same line
                     <div key={index} className="flex items-center space-x-4 px-4 py-2 hover:bg-gray-100 rounded-full cursor-pointer" 
@@ -58,9 +68,9 @@ const Navigation = () => {
                 <div className="flex items-center space-x-3">
                     <Avatar alt="username" src="https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369989.png"/>
                     <div>
-                        <span>Mohd Sarique</span>
+                        <span>{auth.user?.fullName}</span>
                         <br></br>
-                        <span className="opacity-70">@itz_sarique</span>
+                        <span className="opacity-70">@{auth.user?.fullName.split(" ").join("_").toLowerCase()}</span>
                     </div>
                     <Button
                         id="fade-button"

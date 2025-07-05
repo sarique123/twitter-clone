@@ -22,6 +22,7 @@ public class JwtProvider {
                 .claim("email" , auth.getName())
                 .signWith(key)
                 .compact();
+        
         return jwt;
     }
 

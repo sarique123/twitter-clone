@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import TweetCard from "./TweetCard";
 import TweetDetails from "../TweetDetails/TweetDetails";
+import Authentication from "../Authentication/Authentication";
 
 const  HomePage = () => {
   return (
